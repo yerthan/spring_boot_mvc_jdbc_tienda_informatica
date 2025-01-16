@@ -89,6 +89,9 @@ public class FabricanteController {
 		
 		return new RedirectView("/fabricantes");
 	}
-	
-	
+
+	@GetMapping("/test")
+	public String test() {
+		return "test";
+	}
 }

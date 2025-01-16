@@ -1,58 +1,36 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Detalle Fabricante</title>
-<style>
-.clearfix::after {
-	content: "";
-	display: block;
-	clear: both;
-}
-
-</style>
+	<meta charset="UTF-8">
+	<title>Detalle Fabricante</title>
+	<link rel="stylesheet" href="/style.css"/>
 </head>
 <body>
-
-<div id="contenedora" style="float:none; margin: 0 auto;width: 900px;" >
-		<div class="clearfix">
-			<div style="float: left; width: 50%">
+<div class="container mx-auto px-4">
+		<div class="flex flex-row py-4 items-center border-b-2 p-2">
+			<div class="basis-1/2 text-4xl">
 				<h1>Detalle Fabricante</h1>
 			</div>
-			<div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
-				
-				<div style="position: absolute; left: 39%; top : 39%;">
-					
-						<form action="/fabricantes" >
-							<input type="submit" value="Volver" />
-						</form>
-					</div>
-				
-			</div>
+			<form class="basis-1/2 flex justify-center" action="/fabricantes" >
+				<button class="btn btn-gray float-right">Volver</button>
+			</form>
 		</div>
-		
-		<div class="clearfix">
-			<hr/>
-		</div>
-
-		<div style="margin-top: 6px;" class="clearfix">
-			<div style="float: left;width: 50%">
+		<div class="flex flex-row my-0.5">
+			<div class="basis-1/2">
 				<label>Código</label>
 			</div>
-			<div style="float: none;width: auto;overflow: hidden;">
-				<input th:value="${fabricante.codigo}" value="Código" readonly="readonly"/>
+			<div class="basis-1/2">
+				<input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${fabricante.codigo}" value="Código" readonly="readonly"/>
 			</div> 
 		</div>
-		<div style="margin-top: 6px;" class="clearfix">
-			<div style="float: left;width: 50%">
+		<div class="flex flex-row my-0.5">
+			<div class="basis-1/2">
 				<label>Nombre</label>
 			</div>
-			<div style="float: none;width: auto;overflow: hidden;">
-				<input th:value="${fabricante.nombre}" value="Fabricante" readonly="readonly"/>
+			<div class="basis-1/2">
+				<input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight" th:value="${fabricante.nombre}" value="Fabricante" readonly="readonly"/>
 			</div> 
 		</div>
-
 </div>
-
 </body>
 </html>
