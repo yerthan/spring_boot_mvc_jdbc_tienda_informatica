@@ -10,7 +10,8 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class FabricanteDAOImpl  implements FabricanteDAO{
+public class
+FabricanteDAOImpl  implements FabricanteDAO{
 
 	 @Autowired
 	 private JdbcTemplate jdbcTemplate;
