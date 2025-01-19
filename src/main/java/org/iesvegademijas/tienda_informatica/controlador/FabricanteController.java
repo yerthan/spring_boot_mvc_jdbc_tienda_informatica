@@ -23,7 +23,8 @@ public class FabricanteController {
 
 	@Autowired
 	private FabricanteService fabricanteService;
-	
+
+
 	@GetMapping("/fabricantes")
 	public String listar(Model model) {
 		
@@ -89,8 +90,8 @@ public class FabricanteController {
 		
 		return new RedirectView("/fabricantes");
 	}
-
-	/*@GetMapping("/test")
+/*
+	@GetMapping("/test")
 	public String test() {
 		return "test";
 	}*/

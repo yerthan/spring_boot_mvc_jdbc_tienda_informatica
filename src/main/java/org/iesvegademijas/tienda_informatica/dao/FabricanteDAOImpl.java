@@ -10,16 +10,21 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public class
-FabricanteDAOImpl  implements FabricanteDAO{
+public class FabricanteDAOImpl  implements FabricanteDAO{
 
-	 @Autowired
+
 	 private JdbcTemplate jdbcTemplate;
-	
+
+
+	@Autowired
+	public FabricanteDAOImpl(JdbcTemplate jdbcTemplate) {
+		this.jdbcTemplate = jdbcTemplate;
+	}
+
 	/**
 	 * Inserta en base de datos el nuevo fabricante, actualizando el id en el bean fabricante.
 	 */
-	@Override	
+	@Override
 	public synchronized void create(Fabricante fabricante) {
 		
 		jdbcTemplate.update("INSERT INTO fabricante (nombre) VALUES (?)",fabricante.getNombre());

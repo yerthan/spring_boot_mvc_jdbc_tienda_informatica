@@ -36,20 +36,19 @@ public class ProductoController {
     public String detalle(Model model, @PathVariable Integer codigo) {
         Producto producto = productoService.one(codigo);
         model.addAttribute("producto", producto);
-        return "detalle-productos";
+        return "detalle-producto";
     }
 
     @GetMapping("/productos/crear")
     public String crear(Model model) {
         Producto producto = new Producto();
-        model.addAttribute("producto", producto);
-        model.addAttribute("fabricante", fabricanteService.listAll());
-        return "crear-productos";
+        model.addAttribute("producto", new Producto());
+        //model.addAttribute("fabricante", fabricanteService.listAll());
+        return "crear-producto";
     }
 
     @PostMapping("/productos/crear")
     public RedirectView submitCrear(@ModelAttribute("producto") Producto producto){
-
         productoService.newProducto(producto);
         return new RedirectView("/productos");
 

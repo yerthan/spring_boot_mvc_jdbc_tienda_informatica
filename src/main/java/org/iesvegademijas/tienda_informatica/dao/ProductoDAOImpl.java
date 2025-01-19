@@ -1,6 +1,7 @@
 package org.iesvegademijas.tienda_informatica.dao;
 
 
+import org.iesvegademijas.tienda_informatica.modelo.Fabricante;
 import org.iesvegademijas.tienda_informatica.modelo.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -24,8 +25,15 @@ public class ProductoDAOImpl implements ProductoDAO {
 
     @Override
     public void create(Producto producto) {
-        jdbcTemplate.update("INSERT INTO producto (nombre, precio, id_fabricante) VALUES (?, ?, ?)",
-                producto.getNombre() + producto.getPrecio() + producto.getId_fabricanete());
+        Optional<Fabricante> optionalFab = fabricanteDAO.find(producto.getId_fabricanete());
+
+
+        if (optionalFab.isPresent()) {
+            jdbcTemplate.update("INSERT INTO producto (nombre, precio, id_fabricante) VALUES (? ,? ,?)",
+                    producto.getNombre(), producto.getPrecio(), producto.getId_fabricanete());
+        } else {
+            throw new RuntimeException("El fabricante con ID " + producto.getId_fabricanete() + " no existe.");
+        }
     }
 
     @Override
@@ -49,7 +57,7 @@ public class ProductoDAOImpl implements ProductoDAO {
                 ,(rs, rowNum) -> new Producto(rs.getInt("codigo")
                                 ,rs.getString("nombre")
                                 ,rs.getDouble("precio")
-                                ,rs.getInt("id_fabricante")));
+                                ,rs.getInt("id_fabricante")), id);
 
         if(pro != null) return Optional.of(pro);
         else return Optional.empty();
@@ -58,10 +66,9 @@ public class ProductoDAOImpl implements ProductoDAO {
     @Override
     public void update(Producto producto) {
 
-        int rows = jdbcTemplate.update("UPDATE producto set nombre = ?, precio = ?, id_farbicante = ? WHERE codigo = ?",
+        int rows = jdbcTemplate.update("UPDATE producto set nombre = ?, precio = ? WHERE codigo = ?",
                 producto.getNombre()
-                ,producto.getPrecio(),
-                producto.getId_fabricanete()
+                ,producto.getPrecio()
                 ,producto.getCodigo());
         if(rows == 0) System.out.println("Update de producto con 0 registros actualizados");
 

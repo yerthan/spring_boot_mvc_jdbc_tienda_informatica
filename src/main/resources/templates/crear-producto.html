@@ -5,6 +5,7 @@
     <title>Crear Producto</title>
     <link rel="stylesheet" href="/style.css"/>
 </head>
+<body>
 <div class="container mx-auto px-4">
     <form th:action="@{/productos/crear/}" th:object="${producto}" method="post">
         <div class="flex flex-row py-4 items-center border-b-2 p-2">
@@ -20,7 +21,7 @@
             <div class="basis-1/2">Nombre</div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight"
-                       th:field="*{producto.nombre}" />
+                       th:field="*{nombre}" />
             </div>
         </div>
 
@@ -28,7 +29,7 @@
             <div class="basis-1/2">Precio</div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-3 text-gray-700 leading-tight"
-                       th:field="*{producto.precio}" />
+                       th:field="*{precio}" />
             </div>
         </div>
 
@@ -36,7 +37,7 @@
             <div class="basis-1/2">Id_Fabricante</div>
             <div class="basis-1/2">
                 <input class="shadow appearance-none border rounded w-1/2 py-2 px-5 text-gray-700 leading-tight"
-                       th:field="*{producto.id_fabricante}" />
+                       th:field="*{id_fabricanete}" />
             </div>
         </div>
     </form>
