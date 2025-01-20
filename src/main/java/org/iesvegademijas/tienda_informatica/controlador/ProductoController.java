@@ -57,7 +57,7 @@ public class ProductoController {
     @GetMapping("/productos/editar/{id}")
     public String editar(Model model, @PathVariable int id) {
         Producto p =  productoService.one(id);
-        model.addAttribute("p", p);
+        model.addAttribute("producto", p);
         return "editar-producto";
     }
 
