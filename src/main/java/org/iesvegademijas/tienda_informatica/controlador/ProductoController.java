@@ -43,7 +43,7 @@ public class ProductoController {
     public String crear(Model model) {
         Producto producto = new Producto();
         model.addAttribute("producto", new Producto());
-        //model.addAttribute("fabricante", fabricanteService.listAll());
+        model.addAttribute("fabricante", fabricanteService.listAll());
         return "crear-producto";
     }
 
